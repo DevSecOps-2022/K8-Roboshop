@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug
+  namespace: roboshop
+labels:
+  project: roboshop
+  component: debug
+  environment: dev
+spec:
+  containers:
+  - name: debug
+    image: hanumanth897/debug:4.0.0
