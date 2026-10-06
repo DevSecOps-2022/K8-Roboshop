@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: roboshop
+  # labels related to deployment
+  labels:
+    project: roboshop
+    component: database
+    tier: backend
+spec:
+  replicas: 1
+  selector: 
+    # match labels for the pods managed by this deployment
+    matchLabels:
+      project: roboshop
+      component: database
+      tier: backend
+  template:
+    metadata:
+    # labels for the pods within this template
+      labels:
+        project: roboshop
+        component: database
+        tier: backend
+    spec:
+      containers:
+      - name: redis
+        image: redis:7
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: roboshop
+  # labels related to service
+  labels:
+    project: roboshop
+    component: database
+    tier: backend
+spec:
+  # selector determines which pods the service targets
+  selector:
+    project: roboshop
+    component: database
+    tier: backend
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
