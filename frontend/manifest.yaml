@@ -113,7 +113,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  type: LoadBalancer
   name: frontend
   namespace: roboshop
   labels:
@@ -121,6 +120,7 @@ metadata:
     component: frontend
     environment: dev
 spec:
+  type: LoadBalancer
   selector:
     project: roboshop
     component: frontend
