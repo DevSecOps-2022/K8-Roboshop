@@ -16,7 +16,7 @@ metadata:
   # labels related to deployment
   labels:
     project: roboshop
-    component: database
+    component: rabbitmq
     tier: backend
 spec:
   replicas: 1
@@ -24,14 +24,14 @@ spec:
     # match labels for the pods managed by this deployment
     matchLabels:
       project: roboshop
-      component: database
+      component: rabbitmq
       tier: backend
   template:
     metadata:
     # labels for the pods within this template
       labels:
         project: roboshop
-        component: database
+        component: rabbitmq
         tier: backend
     spec:
       containers:
@@ -49,13 +49,13 @@ metadata:
   # labels related to service
   labels:
     project: roboshop
-    component: database
+    component: rabbitmq
     tier: backend
 spec:
   # selector determines which pods the service targets
   selector:
     project: roboshop
-    component: database
+    component: rabbitmq
     tier: backend
   ports:
     - protocol: TCP
