@@ -35,7 +35,7 @@ spec:
       - name: mysql
         image: hanumanth897/mysql:4.0.0
         envFrom:
-        - configMapRef:
+        - secretRef:
             name: mysql-config
 ---
 apiVersion: v1
